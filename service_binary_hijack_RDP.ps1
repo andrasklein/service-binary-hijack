@@ -5,7 +5,7 @@
 
     What it does (mirrors Listings 40-43 of the material):
       1. Lists every service and its binary path.
-      2. Flags the "interesting" ones — binaries NOT under C:\Windows (user-installed, like XAMPP).
+      2. Flags the "interesting" ones - binaries NOT under C:\Windows (user-installed, like XAMPP).
       3. Tests whether YOUR account can WRITE/MODIFY the binary or its folder.
       4. Prints the service account (LocalSystem = SYSTEM payoff) and start mode (Auto = reboot triggers it).
 
@@ -55,7 +55,7 @@ if (-not $svcs) {
 $hits = foreach ($s in $svcs) {
     $exe = Get-Exe $s.PathName
     if (-not $exe) { continue }
-    # skip standard Windows binaries — not realistic targets
+    # skip standard Windows binaries - not realistic targets
     if ($exe -like 'C:\Windows\*') { continue }
     $dir = Split-Path -Parent $exe -ErrorAction SilentlyContinue
     $fileW = Test-IWrite $exe
@@ -76,7 +76,7 @@ $hits = foreach ($s in $svcs) {
 if (-not $hits) {
     Write-Host "[-] No non-Windows service binary is writable by you.`n" -ForegroundColor Yellow
 } else {
-    Write-Host "[+] WRITABLE service binaries found — hijack candidates:`n" -ForegroundColor Green
+    Write-Host "[+] WRITABLE service binaries found - hijack candidates:`n" -ForegroundColor Green
     $hits | Format-List
     Write-Host "[*] For each hit:" -ForegroundColor Cyan
     Write-Host "      RunsAs = LocalSystem  -> payload runs as SYSTEM"

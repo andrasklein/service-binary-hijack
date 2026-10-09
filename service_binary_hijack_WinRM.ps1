@@ -82,7 +82,7 @@ $hits = foreach ($k in $svcKeys) {
 if (-not $hits) {
     Write-Host "[-] No non-Windows service binary is writable by you.`n" -ForegroundColor Yellow
 } else {
-    Write-Host "[+] WRITABLE service binaries found — hijack candidates:`n" -ForegroundColor Green
+    Write-Host "[+] WRITABLE service binaries found - hijack candidates:`n" -ForegroundColor Green
     $hits | Format-List
     Write-Host "[*] For each hit:" -ForegroundColor Cyan
     Write-Host "      RunsAs = LocalSystem  -> payload runs as SYSTEM"
