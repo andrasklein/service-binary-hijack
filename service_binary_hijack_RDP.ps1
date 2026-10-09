@@ -81,5 +81,6 @@ if (-not $hits) {
     Write-Host "[*] For each hit:" -ForegroundColor Cyan
     Write-Host "      RunsAs = LocalSystem  -> payload runs as SYSTEM"
     Write-Host "      StartMode = Auto      -> reboot triggers it (need SeShutdownPrivilege: whoami /priv)"
-    Write-Host "      else try: net stop <svc> / Restart-Service <svc>`n"
+    Write-Host "      else try: net stop [svc]  /  Restart-Service [svc]"
+    Write-Host ""
 }
